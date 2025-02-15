@@ -8,7 +8,7 @@ import globalStyle from '../../assets/styles/globalStyle';
 const Home = () => {
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
-      <Header title={'Home page'} type={1} />
+      <Header title={'Home page - ddd'} type={1} />
       <Header title={'Home page'} type={2} />
       <Header title={'Home page'} type={3} />
     </SafeAreaView>
