@@ -5,8 +5,15 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {View, Text} from 'react-native';
 //
 import {Routes} from './Routes';
+//
 import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
+import Contractors from '../screens/Contractors/Contractors';
+import FTTHProgress from '../screens/FTTHProgress/FTTHProgress';
+import StatistikaAllRPA from '../screens/StatistikaAllRPA/StatistikaAllRPA';
+import Chart1 from '../screens/Chart1/Chart1';
+
+
 //
 import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
 
@@ -42,45 +49,43 @@ const Tab3 = () => {
 export const ProfileTabsNavigation = () => {
   return (
     <ProfileTabs.Navigator
-    screenOptions={{
-      tabBarIndicatorStyle: {
-        backgroundColor: 'transparent',
-      },
-      tabBarStyle: {
-        zIndex: 0,
-        elevation: 0,
-      },
-    }}>
-    <ProfileTabs.Screen
-      name={'Tab1'}
-      options={{
-        tabBarLabel: ({focused}) => (
-          <ProfileTabTitle isFocused={focused} title={'Photos'} />
-        ),
-      }}
-      component={Tab1}
-    />
-    <ProfileTabs.Screen
-      name={'Tab2'}
-      options={{
-        tabBarLabel: ({focused}) => (
-          <ProfileTabTitle isFocused={focused} title={'Videos'} />
-        ),
-      }}
-      component={Tab2}
-    />
-    <ProfileTabs.Screen
-      name={'Tab3'}
-      options={{
-        tabBarLabel: ({focused}) => (
-          <ProfileTabTitle isFocused={focused} title={'Saved'} />
-        ),
-      }}
-      component={Tab3}
-    />
-
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: 'transparent',
+        },
+        tabBarStyle: {
+          zIndex: 0,
+          elevation: 0,
+        },
+      }}>
+      <ProfileTabs.Screen
+        name={'Tab1'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Photos'} />
+          ),
+        }}
+        component={Tab1}
+      />
+      <ProfileTabs.Screen
+        name={'Tab2'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Videos'} />
+          ),
+        }}
+        component={Tab2}
+      />
+      <ProfileTabs.Screen
+        name={'Tab3'}
+        options={{
+          tabBarLabel: ({focused}) => (
+            <ProfileTabTitle isFocused={focused} title={'Saved'} />
+          ),
+        }}
+        component={Tab3}
+      />
     </ProfileTabs.Navigator>
-    
   );
 };
 //----------------------------------------------------------------------------------
@@ -90,7 +95,15 @@ const MainMenuNavigation = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name={Routes.Home} component={Home} />
-      <Stack.Screen name={Routes.Profile} component={Profile} />
+      <Drawer.Screen name={Routes.Profile} component={Profile} />
+      <Drawer.Screen name={Routes.Contractors} component={Contractors} />
+      <Drawer.Screen name={Routes.FTTHProgress} component={FTTHProgress} />
+      <Drawer.Screen
+        name={Routes.StatistikaAllRPA}
+        component={StatistikaAllRPA}
+      />
+      <Drawer.Screen name={Routes.LineChart} component={Chart1} />
+      
     </Drawer.Navigator>
   );
 };

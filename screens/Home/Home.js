@@ -1,28 +1,75 @@
-import React from 'react';
-import {SafeAreaView, Text, View, TouchableOpacity} from 'react-native';
-import Header from '../../components/Header/Header';
-import {Routes} from '../../navigation/Routes';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import {newShade} from '../../utils';
 
-import style from './style';
-import globalStyle from '../../assets/styles/globalStyle';
+const MainPage = () => {
+  const [color, setColor] = useState('#ff0000');
 
-const Home = ({navigation}) => {
+  const box = {
+    backgroundColor: color,
+    borderRadius: 8,
+    elevation: 5,
+    width: 100,
+    height: 100,
+    marginBottom: 10,
+  };
+
+  const handlePress = () => {
+    const newColor = newShade(color, 50);
+    setColor(newColor);
+  };
+
   return (
-    <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
-      <Header title={'Home page - ddd'} type={1} />
-      <Header title={'Home page'} type={2} />
-      <Header title={'Home page'} type={3} />
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate(Routes.Profile);
-        }}>
-        <View>
-          <Text>Go to Profile Page</Text>
-        </View>
+    <View style={styles.container}>
+      <Text style={styles.text}>Main Page</Text>
+      <View style={box}>
+        <Text>&nbsp;</Text>
+      </View>
+      <TextInput value={color} onChangeText={setColor} style={styles.input} />
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Go</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
-export default Home;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    fontSize: 22,
+  },
+  button: {
+    backgroundColor: 'blue',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 25,
+    width: '100%',
+    textAlign: 'center',
+  },
+});
+
+export default MainPage;
